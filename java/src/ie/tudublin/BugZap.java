@@ -6,8 +6,10 @@ public class BugZap extends PApplet
 {
 
 	float playerX, playerY, playerWidth;
-	//float x1dir, x2dir, y1dir, y2dir;
-	//float c = 0;
+	float bugX, bugY, bugWidth;
+	float halfPlayer, halfBug;
+
+	int score = 0;
 
 	public void settings()
 	{
@@ -17,27 +19,50 @@ public class BugZap extends PApplet
 	public void setup() {
 		//colorMode(HSB);
 		background(0);
+		smooth();
+
+
+		playerX = width * 0.5f;
+		playerY = height - 100;
+
+		playerWidth = 50;
+		halfPlayer = playerWidth * 0.5f;
+
+		resetBug();
+	}
+
+
+	void resetBug(){
+
+		bugY = 50;
+		bugWidth = 50;
+		halfBug = bugWidth * 0.5f;
+		bugX = random(halfBug, width - halfBug);
 	}
 
 	public void drawPlayer(float x, float y, float w){
 		
 		background(0);
-		stroke(0, 0, 255);
-		fill(0, 0, 255);
-		circle(x, y, w);
+		stroke(255);
+		noFill();
+		rectMode(CENTER);
+		rect(x, y, w, w);
+		line(x, y - halfPlayer, x, y - halfPlayer * 2);
 
 	}
 	
 	public void draw()
 	{	
 		
-		drawPlayer(playerX, playerY, 100);
+		drawPlayer(playerX, playerY, playerWidth);
 		
 		
 	}
 
 	public void keyPressed(){
 		
+		//polymorphism: the type is of a superclass, 
+		//but the instance is of one of the subclasses
 
 		if (keyCode == LEFT){
 
@@ -55,26 +80,26 @@ public class BugZap extends PApplet
 			}
 		}
 
-
+		/*
 		if (keyCode == UP){
 
 			if (playerY < height){
 			//System.out.println("Left arrow pressed");
-			playerX--;
+			playerY--;
 			}
 		}
 
 		if (keyCode == DOWN){
 
-			if (playerX < width){
+			if (playerY < width){
 			//System.out.println("Right arrow pressed");
-			playerX++;
+			playerY++;
 			}
-		}
+		}*/
 
 		if (key == ' '){
 			//System.out.println("SPACE key pressed");
-			line(playerX, playerY, width/10, width/5);
+			line(playerX, playerY - halfPlayer, playerX, 0);
 		}
 	}
 
