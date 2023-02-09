@@ -5,6 +5,7 @@ import processing.core.PApplet;
 public class Loops extends PApplet {
 
 	int mode = 0;
+	float off;
 
 	public void settings() {
 		size(1000, 1000);
@@ -31,7 +32,9 @@ public class Loops extends PApplet {
 
 			case 0:
 
-				int numCircles = 10;
+				//int numCircles = 10;
+				int numCircles = (int)max(1, mouseX / 10.0f);
+
 				float d = width / numCircles;
 
 				for (int j = 0; j < numCircles; j++) {
@@ -42,12 +45,13 @@ public class Loops extends PApplet {
 						float y = (d * 0.5f) + (d * j);
 
 						float c = (i + j) / (numCircles * 2.0f) * 255;
-						fill(c, 255, 255);
-						
+						//fill(c, 255, 255);
+						fill(c + off, 255, 255);
 						circle(x, y, d);
 
 					}
 				}
+				off+= (mouseY / 50.0f);
 				break;
 			case 1:
 				break;
