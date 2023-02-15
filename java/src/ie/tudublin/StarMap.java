@@ -33,6 +33,8 @@ public class StarMap extends PApplet
 
 		for (int i = -5; i <= 5; i++){
 
+			
+
 			float x = border + (gap * (i + 5));
 			line(x, border, x, height - border);
 			line(border, x, width - border, x);
