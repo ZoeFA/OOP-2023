@@ -6,8 +6,8 @@ import processing.data.*;
 
 public class StarMap extends PApplet
 {
-
-	ArrayList[] stars;
+	
+	ArrayList<Star> stars = new ArrayList<Star>();
 
 	public void settings()
 	{

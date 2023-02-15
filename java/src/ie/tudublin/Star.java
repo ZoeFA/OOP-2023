@@ -1,11 +1,9 @@
 package ie.tudublin;
 import processing.data.*;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 
 public class Star {
-
-  ArrayList<Star> stars = new ArrayList<Star>();
 
   private boolean hab;
   private String displayName;
