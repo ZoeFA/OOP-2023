@@ -2,6 +2,8 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 
+import processing.data.*;
+
 public class StarMap extends PApplet
 {
 	public void settings()
@@ -14,12 +16,11 @@ public class StarMap extends PApplet
 		background(0);
 		smooth();
 		
-
-
 	}
-	public void drawGrid(){
-		
 
+
+	public void drawGrid(){
+	
 		stroke(0, 255, 0);
 
 		float border = 50.0f;
@@ -35,6 +36,16 @@ public class StarMap extends PApplet
 		}
 	}
 
+	void loadStars(){
+
+    Table table = loadTable ("HabHYG15ly.csv", "header");
+  
+    for (TableRow r:table.rows()){
+  
+      Stars s = new Star(r);
+      stars.add(s);
+    }
+  }
 		
 	public void draw()
 	{	
