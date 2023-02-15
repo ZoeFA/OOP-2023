@@ -1,11 +1,14 @@
 package ie.tudublin;
 
 import processing.core.PApplet;
-
+import java.util.ArrayList;
 import processing.data.*;
 
 public class StarMap extends PApplet
 {
+
+	ArrayList[] stars;
+
 	public void settings()
 	{
 		size(500, 500);
@@ -42,7 +45,7 @@ public class StarMap extends PApplet
   
     for (TableRow r:table.rows()){
   
-      Stars s = new Star(r);
+      Star s = new Star(r);
       stars.add(s);
     }
   }
@@ -51,6 +54,7 @@ public class StarMap extends PApplet
 	{	
 		strokeWeight(5);	
 		drawGrid();	
+
 
 	}
 }

@@ -8,6 +8,7 @@ public class Star {
   String displayName;
   float distance, absMag;
   float xG, yG, zG;
+
   
   public Star(TableRow tr){
   
