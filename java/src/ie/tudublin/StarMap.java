@@ -14,8 +14,9 @@ public class StarMap extends PApplet
 		background(0);
 		smooth();
 		
-	}
 
+
+	}
 	public void drawGrid(){
 		
 
@@ -27,15 +28,10 @@ public class StarMap extends PApplet
 		float gap = width - (border * 2.0f) / (float) count;
 
 		for (int i = -5; i <= 5; i++){
-
 			float x = border + (gap * (i + 5));
 			line(x, border, x, height - border);
 			line(border, x, width - border, x);
 		}
-		
-
-		
-		
 	}
 
 		
@@ -43,5 +39,6 @@ public class StarMap extends PApplet
 	{	
 		strokeWeight(5);	
 		drawGrid();	
+
 	}
 }
