@@ -1,13 +1,16 @@
 package ie.tudublin;
 import processing.data.*;
+import java.util.ArrayList;
 
 
 public class Star {
 
-  boolean hab;
-  String displayName;
-  float distance, absMag;
-  float xG, yG, zG;
+  ArrayList<Star> stars = new ArrayList<Star>();
+
+  private boolean hab;
+  private String displayName;
+  private float distance, absMag;
+  private float xG, yG, zG;
 
   
   public Star(TableRow tr){
