@@ -1,13 +1,13 @@
 package ie.tudublin;
-
-import processing.core.PApplet;
-
 import processing.data.*;
 
 
 public class Star {
 
-  
+  boolean hab;
+  String displayName;
+  float distance, absMag;
+  float xG, yG, zG;
   
   public Star(TableRow tr){
   
