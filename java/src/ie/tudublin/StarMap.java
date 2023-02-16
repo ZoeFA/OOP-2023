@@ -18,15 +18,18 @@ public class StarMap extends PApplet
 		colorMode(RGB);
 		background(0);
 		smooth();
+
+		loadStars();
+		printStars();
 		
 	}
 
 
 	public void drawGrid(){
 	
-		stroke(0, 255, 0);
+		stroke(0, 255, 255);
 
-		float border = 50.0f;
+		float border = width * 0.1f;
 		
 		int count = 10;
 		float gap = (width - (border * 2.0f))/ (float) count;
@@ -35,9 +38,38 @@ public class StarMap extends PApplet
 
 			
 
-			float x = border + (gap * (i + 5));
+			float x = map(i, -5, 5, border, width - border);
 			line(x, border, x, height - border);
 			line(border, x, width - border, x);
+
+			textAlign(CENTER, CENTER);
+			text(i, x, border * 0.5f );
+
+			text(i, x, height * 0.5f );
+
+		}
+
+		//float f = map(5, 0, 20, 100, 200);
+		//float f = map1(a:5, b:0, c:10, d:100, e:200);
+
+	}
+
+	float map1(float a, float b, float c, float d, float e){
+
+		float r1 = c - b;
+		float r2 = e - d;
+
+		float howfar = a - b;
+
+		return d + (howfar / r1) + r2;//how far into range one you are
+
+	}
+
+	void printStars(){
+
+		for (int i = 0; i < stars.size(); i++){
+			
+			println(stars.get(i))
 		}
 	}
 
