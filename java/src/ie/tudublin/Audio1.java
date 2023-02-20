@@ -61,7 +61,24 @@ public class Audio1 extends PApplet
     //--> average or absolute value abs
     float average = total / (float)ab.size();
     float r = average * 200;//radius
+    
+    lerpedR = lerp(lerpedR, r, 0.1f); //bring lerpedR 10% closer to r
 
     circle(100, 200, r);
+
+
+
+    //lerp(a:10, b:20, t:0.1); //linear interpalation
+
+
 	}
+
+    float lerpedR = 0;
+
+
+/*
+    float lerp (float a, float b, float t){
+
+      return a + (b - a) * t;
+    }*/
 	}
