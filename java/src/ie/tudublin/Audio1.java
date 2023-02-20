@@ -45,12 +45,23 @@ public class Audio1 extends PApplet
     float half = height / 2;
     float cgap = 255 / (float)ab.size();
 
+    float total = 0;
+
+
     //interate over audio buffer like an array
     for (int i = 0; i < ab.size(); i++){
 
 
+      total += abs(ab.get(i));
       stroke(cgap * i, 255, 255);
       line(i, half,i, half + ab.get(i) * half);
     }
+
+    //calculate the average size of the buffer = est of loud the audio is
+    //--> average or absolute value abs
+    float average = total / (float)ab.size();
+    float r = average * 200;//radius
+
+    circle(100, 200, r);
 	}
 	}
