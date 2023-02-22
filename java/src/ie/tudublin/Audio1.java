@@ -18,6 +18,7 @@ public class Audio1 extends PApplet
     float y = 0;
     float smoothedY = 0;
     float smoothedAmplitude = 0;
+    float lerpedA = 0;
 
     public void keyPressed() {
 		if (key >= '0' && key <= '9') {
@@ -36,6 +37,7 @@ public class Audio1 extends PApplet
     public void settings()
     {
         size(1024, 1000, P3D);
+        
         //fullScreen(P3D, SPAN);
     }
 
@@ -72,9 +74,13 @@ public class Audio1 extends PApplet
         {
             sum += abs(ab.get(i));
         }
+
         average= sum / (float) ab.size();
 
         smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+        float r = average * 200;//radius
+        lerpedA = lerp(lerpedA, r, 0.1f); //bring lerpedR 10% closer to r
+
         
         float cx = width / 2;
         float cy = height / 2;
@@ -111,14 +117,22 @@ public class Audio1 extends PApplet
                     stroke(c, 255, 255);
                     float f = ab.get(i) * halfH;
                     
-                    //line(i, height + f, i, height - f);//bottom
-                    //line(i, 0 + f, i, 0 - f);//top
-                    line(i, f + height, i, f - height);
+                    line(i, height + f, i, height - f);//bottom
+                    line(i, 0 + f, i, 0 - f);//top
+                    //line(i, height + f, i + height, height - f); no working
                     
                 }
                 break;
             case 3: //3 key is pressed, circle
                 background(0);
+                {
+                    stroke(255);
+                    fill(0);        
+                    
+                    circle(cy, halfH, lerpedA * 10);
+                    
+
+                }
                 break;
             case 4://4 key is pressed, square
                 background(0);
@@ -132,7 +146,8 @@ public class Audio1 extends PApplet
                     stroke(c, 255, 255);
                     float f = ab.get(i) * halfH;
                     line(0, 0 + f, height, height - f);
-                    //line(x1, y1, x2, y2);                    
+                    //line(0, i + f, height, i - f); another custom design 
+                    //line(0, i + f, i, i - f);                   
                 }
                 break;
         }
