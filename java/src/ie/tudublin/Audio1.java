@@ -109,8 +109,14 @@ public class Audio1 extends PApplet
                     float c = map(i, 0, ab.size(), 0, 255);
                     stroke(c, 255, 255);
                     float f = ab.get(i) * halfH;
-                    line(i, height + f, i, height - f);
-                    //line(x1, y1, x2, y2);                    
+                    
+                    float a = height;
+                    float b = width;
+
+                    float p = 2*(a + b);
+                    line(i, p + f, i, p - f);
+                    //line(i, height + f, i, height - f);//bottom
+                    
                 }
                 break;
             case 3: //3 key is pressed, circle
