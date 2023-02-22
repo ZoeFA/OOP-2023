@@ -123,19 +123,29 @@ public class Audio1 extends PApplet
                     
                 }
                 break;
+                
             case 3: //3 key is pressed, circle
                 background(0);
                 {
-                    stroke(255);
+                    colorMode(RGB);
+                    stroke(255, 150, 10);
+                    strokeWeight(6);
                     fill(0);        
                     
                     circle(cy, halfH, lerpedA * 10);
-                    
-
                 }
                 break;
+
             case 4://4 key is pressed, square
                 background(0);
+                {
+                    colorMode(RGB);
+                    stroke(255, 150, 10);
+                    strokeWeight(6);
+                    fill(0);        
+                    
+                    circle(cy, halfH, lerpedA * 10);
+                }
                 break;
             
             case 5://5 key is pressed, custom, weird prism design
