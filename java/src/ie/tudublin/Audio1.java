@@ -80,39 +80,57 @@ public class Audio1 extends PApplet
         float cy = height / 2;
 
         switch (mode) {
-			case 0://when 0 key is pressed
+			case 0://when 0 key is pressed, wavy lines
                 background(0);
                 for(int i = 0 ; i < ab.size() ; i ++)
                 {
                     //float c = map(ab.get(i), -1, 1, 0, 255);
                     float c = map(i, 0, ab.size(), 0, 255);
                     stroke(c, 255, 255);
-                    float f = ab.get(i) * halfH;
-                    line(i, halfH + f, i, halfH - f);                    
+                    float f = ab.get(i) * halfH;                   
                 }
                 break;
             
-            case 1: //when 1 key is pressed
+            case 1: //when 1 key is pressed, waveform
                 background(0);
                 for(int i = 0 ; i < ab.size() ; i ++)
                 {
-                    //float c = map(ab.get(i), -1, 1, 0, 255);
                     float c = map(i, 0, ab.size(), 0, 255);
                     stroke(c, 255, 255);
                     float f = ab.get(i) * halfH;
                     line(i, halfH + f, i, halfH - f);                    
                 }            
                 break;
-            case 2: //2 key is pressed
+            
+            case 2: //2 key is pressed, 4 waveform on perimeter
+                background(0);
+                for(int i = 0 ; i < ab.size() ; i ++)
+                {
+                    float c = map(i, 0, ab.size(), 0, 255);
+                    stroke(c, 255, 255);
+                    float f = ab.get(i) * halfH;
+                    line(i, height + f, i, height - f);
+                    //line(x1, y1, x2, y2);                    
+                }
+                break;
+            case 3: //3 key is pressed, circle
                 background(0);
                 break;
-            case 3: //3 key is pressed
+            case 4://4 key is pressed, square
                 background(0);
                 break;
-            case 4://4 key is pressed
+            
+            case 5://5 key is pressed, custom, weird prism design
                 background(0);
+                for(int i = 0 ; i < ab.size() ; i ++)
+                {
+                    float c = map(i, 0, ab.size(), 0, 255);
+                    stroke(c, 255, 255);
+                    float f = ab.get(i) * halfH;
+                    line(0, 0 + f, height, height - f);
+                    //line(x1, y1, x2, y2);                    
+                }
                 break;
-
         }
         
 
