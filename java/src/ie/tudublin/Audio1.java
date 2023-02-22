@@ -87,7 +87,8 @@ public class Audio1 extends PApplet
                     //float c = map(ab.get(i), -1, 1, 0, 255);
                     float c = map(i, 0, ab.size(), 0, 255);
                     stroke(c, 255, 255);
-                    float f = ab.get(i) * halfH;                   
+                    float f = ab.get(i) * halfH;    
+                    
                 }
                 break;
             
@@ -110,12 +111,9 @@ public class Audio1 extends PApplet
                     stroke(c, 255, 255);
                     float f = ab.get(i) * halfH;
                     
-                    float a = height;
-                    float b = width;
-
-                    float p = 2*(a + b);
-                    line(i, p + f, i, p - f);
                     //line(i, height + f, i, height - f);//bottom
+                    //line(i, 0 + f, i, 0 - f);//top
+                    line(i, f + height, i, f - height);
                     
                 }
                 break;
