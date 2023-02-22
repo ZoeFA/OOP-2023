@@ -80,7 +80,7 @@ public class Audio1 extends PApplet
         float cy = height / 2;
 
         switch (mode) {
-			case 0:
+			case 0://when 0 key is pressed
                 background(0);
                 for(int i = 0 ; i < ab.size() ; i ++)
                 {
@@ -91,9 +91,27 @@ public class Audio1 extends PApplet
                     line(i, halfH + f, i, halfH - f);                    
                 }
                 break;
-        case 1:
-            background(0);            
-            break;
+            
+            case 1: //when 1 key is pressed
+                background(0);
+                for(int i = 0 ; i < ab.size() ; i ++)
+                {
+                    //float c = map(ab.get(i), -1, 1, 0, 255);
+                    float c = map(i, 0, ab.size(), 0, 255);
+                    stroke(c, 255, 255);
+                    float f = ab.get(i) * halfH;
+                    line(i, halfH + f, i, halfH - f);                    
+                }            
+                break;
+            case 2: //2 key is pressed
+                background(0);
+                break;
+            case 3: //3 key is pressed
+                background(0);
+                break;
+            case 4://4 key is pressed
+                background(0);
+                break;
 
         }
         
