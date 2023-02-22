@@ -18,6 +18,7 @@ public class Audio1 extends PApplet
     float y = 0;
     float smoothedY = 0;
     float smoothedAmplitude = 0;
+    float lerpedR = 0;
     float lerpedA = 0;
 
     public void keyPressed() {
@@ -78,7 +79,12 @@ public class Audio1 extends PApplet
         average= sum / (float) ab.size();
 
         smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+
+        //for circle
         float r = average * 200;//radius
+        lerpedR = lerp(lerpedR, r, 0.1f); //bring lerpedR 10% closer to r
+
+        //for square
         lerpedA = lerp(lerpedA, r, 0.1f); //bring lerpedR 10% closer to r
 
         
@@ -123,7 +129,7 @@ public class Audio1 extends PApplet
                     
                 }
                 break;
-                
+
             case 3: //3 key is pressed, circle
                 background(0);
                 {
@@ -132,7 +138,7 @@ public class Audio1 extends PApplet
                     strokeWeight(6);
                     fill(0);        
                     
-                    circle(cy, halfH, lerpedA * 10);
+                    circle(cy, halfH, lerpedR * 10);
                 }
                 break;
 
@@ -144,7 +150,8 @@ public class Audio1 extends PApplet
                     strokeWeight(6);
                     fill(0);        
                     
-                    circle(cy, halfH, lerpedA * 10);
+                    square(halfH, cx, lerpedR * 10);
+                    //square(x, y, extent);
                 }
                 break;
             
