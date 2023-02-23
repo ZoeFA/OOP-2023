@@ -62,6 +62,8 @@ public class Audio1 extends PApplet
 
     float off = 0;
 
+    float lerpedBuffer[] = new float[1024];
+
     public void draw()
     {
         //background(0);
@@ -74,6 +76,7 @@ public class Audio1 extends PApplet
         for(int i = 0 ; i < ab.size() ; i ++)
         {
             sum += abs(ab.get(i));
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
         }
 
         average= sum / (float) ab.size();
@@ -99,7 +102,9 @@ public class Audio1 extends PApplet
                     //float c = map(ab.get(i), -1, 1, 0, 255);
                     float c = map(i, 0, ab.size(), 0, 255);
                     stroke(c, 255, 255);
-                    float f = ab.get(i) * halfH;    
+                    float f = lerpedBuffer[i] * halfH * 4.0f;  
+                    line(halfH + f, i, halfH - f, i); 
+                    //not done
                     
                 }
                 break;
@@ -119,13 +124,15 @@ public class Audio1 extends PApplet
                 background(0);
                 for(int i = 0 ; i < ab.size() ; i ++)
                 {
-                    float c = map(i, 0, ab.size(), 0, 255);
+                    //float c = map(i, 0, ab.size(), 0, 255);
+                    float c = map(1, 0, ab.size(), mouseX/2, mouseY /2);//changes colours based on mouse movement
                     stroke(c, 255, 255);
                     float f = ab.get(i) * halfH;
                     
                     line(i, height + f, i, height - f);//bottom
                     line(i, 0 + f, i, 0 - f);//top
-                    //line(i, height + f, i + height, height - f); no working
+                    line(0, i, f, i);//left
+                    line(width, i , width - f, i);//right
                     
                 }
                 break;
@@ -133,24 +140,24 @@ public class Audio1 extends PApplet
             case 3: //3 key is pressed, circle
                 background(0);
                 {
-                    colorMode(RGB);
+                    //colorMode(RGB);
                     stroke(255, 150, 10);
                     strokeWeight(6);
                     fill(0);        
                     
-                    circle(cy, halfH, lerpedR * 10);
+                    circle(cy, halfH, smoothedAmplitude * 10);
                 }
                 break;
 
             case 4://4 key is pressed, square
                 background(0);
                 {
-                    colorMode(RGB);
+                    //colorMode(RGB);
                     stroke(255, 150, 10);
                     strokeWeight(6);
                     fill(0);        
                     
-                    square(halfH, cx, lerpedR * 10);
+                    square(cy, halfH, smoothedAmplitude * 10);
                     //square(x, y, extent);
                 }
                 break;
@@ -162,9 +169,10 @@ public class Audio1 extends PApplet
                     float c = map(i, 0, ab.size(), 0, 255);
                     stroke(c, 255, 255);
                     float f = ab.get(i) * halfH;
-                    line(0, 0 + f, height, height - f);
-                    //line(0, i + f, height, i - f); another custom design 
-                    //line(0, i + f, i, i - f);                   
+
+                    //line(0, 0 + f, height, height - f);
+                    //line(0, i + f, height, i - f); //another custom design 
+                    line(0, i + f, i, i - f);                   
                 }
                 break;
         }
