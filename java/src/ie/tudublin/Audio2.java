@@ -4,6 +4,7 @@ import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
+import ddf.minim.analysis.FFT;
 import processing.core.PApplet;
 
 public class Audio2 extends PApplet
@@ -12,7 +13,7 @@ public class Audio2 extends PApplet
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
-
+    FFT fft;
     
     public void keyPressed() {
 	
@@ -28,12 +29,14 @@ public class Audio2 extends PApplet
     {
         m = new Minim(this);
         ai = m.getLineIn(Minim.MONO, width, 44100, 16);
-        ap = ai.mix;
+        ab = ai.mix;
         lerpedBuffer = new float[width];
+
+        fft = new FFT(width, 44100);
     }
 
     float lerpedBuffer[] = new float[1024];
-
+    //fft.forward(ab);
     public void draw()
     {
         background(0);
@@ -49,6 +52,29 @@ public class Audio2 extends PApplet
           float f = abs(lerpedBuffer[i] * half * 2.0f);
           line(i, half + f, i, half - f);
         }
+
+        fft.forward(ab);
+        stroke(255);
+
+        int highestIndex = 0;
+        for(int i = 0; i < fft.specSize() / 2; i ++){
+
+          line(i * 2.0f, height, i * 2.0f, height - fft.getBand(i) * 5.0f);
+
+          if (fft.getBand(i) > fft.getBand(highestIndex)){
+            
+            highestIndex = i;
+          }
+        }
+
+        float freq = fft.indextoFreq(highestIndex);
+        fill(255, 255, 255);
+        textSize(20);
+        text("Freq: " + freq, 50, 50);
+
+        float y = map(freq, 1000.0f, 2500.0f, height, 0);
+
+        circle(200 , y , 50);
 
         //println(map(5, 0, 10, 1000, 2000));
         //println(map1(5, 2, 10, 1000, 2000));
