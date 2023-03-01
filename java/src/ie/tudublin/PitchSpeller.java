@@ -1,7 +1,6 @@
 package ie.tudublin;
-import processing.core.PApplet;
 
-public class PitchSpeller extends PApplet{
+public class PitchSpeller {
 
   //array of frequen
   float[] frequencies = {293.66f, 329.63f, 369.99f, 392.00f, 440.00f, 493.88f, 554.37f, /*d4*/ 
@@ -17,14 +16,10 @@ public class PitchSpeller extends PApplet{
                         "d''"/*d8 */
                         };
                         //, "e''", "f''", "g''", "a''", "b''", "c''"
-
-}
-
-
-
   
+
   String spell(float frequency){
-    
+
     for (int i = 0; i < frequencies.length; i++){
       if(frequency < frequencies[i + 1]){
 
@@ -34,6 +29,10 @@ public class PitchSpeller extends PApplet{
 
     return "" ;
   }
+
+}
+
+ 
 
   
 
