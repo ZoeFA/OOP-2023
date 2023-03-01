@@ -73,6 +73,7 @@ public class Audio2 extends PApplet
         text("Freq: " + freq, 50, 50);
 
         float y = map(freq, 1000.0f, 2500.0f, height, 0);
+        lerpedY = lerp(lerpedY, y , 0.1f);
 
         circle(200 , y , 50);
 
