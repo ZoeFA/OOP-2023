@@ -32,7 +32,7 @@ public class LifeBoard {
             {
                 if (! (i == 0 && j == 0))
                 {
-                    if (getCell(i, j))
+                    if (getCell(row + i, col + j))
                     {
                         count ++;
                     }
