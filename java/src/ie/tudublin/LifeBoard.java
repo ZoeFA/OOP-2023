@@ -59,7 +59,6 @@ public class LifeBoard {
                     {
                         next[row][col] = false;
                     }
-                    
                 }
                 else
                 {
