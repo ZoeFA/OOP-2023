@@ -11,7 +11,6 @@ public class Ship{
   private float rot;
   private int c;
   private float size;
-
   private float halfSize;
 
 //constructer
@@ -63,4 +62,31 @@ public class Ship{
     p.line(pos.x, pos.y, pos.x -halfSize, pos.y +halfSize);
   }
   
+
+  public void move(){//method
+
+    if (p.keyPressed){
+      if (p.keyCode == PApplet.LEFT){
+        
+        //pos.x --;
+        rot -= 0.1f;
+      }
+
+      if(p.keyCode == PApplet.RIGHT){
+        
+        //pos.x ++;
+        rot += 0.1f;
+      }
+
+      if (p.keyCode == PApplet.UP){
+        
+        pos.y --;
+      }
+
+      if(p.keyCode == PApplet.DOWN){
+
+        pos.y ++;
+      }
+    }
+  }
 }

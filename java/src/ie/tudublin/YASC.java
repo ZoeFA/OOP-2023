@@ -7,6 +7,9 @@ public class YASC extends PApplet
 
 	Ship ship;
 
+
+
+
 	public void settings()
 	{
 		size(500, 500);
@@ -27,6 +30,7 @@ public class YASC extends PApplet
 		background(0);
 		
 		ship.render();
+		ship.move();
 
 		//ship: centred on a square
 	}
