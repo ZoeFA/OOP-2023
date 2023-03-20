@@ -58,7 +58,8 @@ public class Ship{
 
 
   public void render(){
-
+    p.pushMatrix();
+    p.translate(pos.x, pos.y);
     p.rotate(rot);
     p.stroke(c, 255, 255);
     //p.line(pos.x - halfSize, pos.y + halfSize, pos.x, pos.y - halfSize);//left line
