@@ -12,12 +12,15 @@ public class Ship{
   private int c;
   private float size;
 
+  private float halfSize;
+
 //constructer
   public Ship(float x, float y, float size, int c, PApplet p){
     //assigning the private fields
 
     pos = new PVector(x, y); //instanciate new class, otherwise null pointers
     this.size = size; //disambiguation by using this.
+    this.halfSize = size/2;
     this.c = c;
     this.p = p;
 
@@ -53,6 +56,11 @@ public class Ship{
 
   public void render(){
 
+    p.stroke(c, 255, 255);
+    p.line(pos.x - halfSize, pos.y + halfSize, pos.x, pos.y - halfSize);//left line
+    p.line(pos.x, pos.y - halfSize, pos.x + halfSize, pos.y + halfSize); //top centre
+    p.line(pos.x + halfSize, pos.y + halfSize, pos.x, pos.y);
+    p.line(pos.x, pos.y, pos.x -halfSize, pos.y +halfSize);
   }
   
 }
