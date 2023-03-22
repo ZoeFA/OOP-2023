@@ -65,7 +65,7 @@ public class Ship {
             if (p.keyCode == PApplet.RIGHT)
             {
                 rot += 0.1f;
-                pos.x ++;
+                //pos.x ++;
             }
 
             if (p.keyCode == PApplet.UP)
