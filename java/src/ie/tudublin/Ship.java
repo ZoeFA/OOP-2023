@@ -53,30 +53,42 @@ public class Ship {
     {
         forward.x = PApplet.sin(rot);
         forward.y = - PApplet.cos(rot);
+
+        YASC yasc = ((YASC)p);
         
-        if (p.keyPressed)
+        if (yasc.keyPressed)
         {            
             if (p.keyCode == PApplet.LEFT)
             {
                 rot -= 0.1f;
             }
 
-            if (p.keyCode == PApplet.RIGHT)
+            if (yasc.keyCode == PApplet.RIGHT)
             {
                 rot += 0.1f;
             }
 
-            if (p.keyCode == PApplet.UP)
+            if (yasc.keyCode == PApplet.UP)
             {
                 pos.x += forward.x;
                 pos.y += forward.y;
             }
 
-            if (p.keyCode == PApplet.DOWN)
+            if (yasc.keyCode == PApplet.DOWN)
             {
                 pos.x -= forward.x;
                 pos.y -= forward.y;
 
+            }
+
+            if (yasc.keys[' ']){
+
+                PVector inFront = PVector.add(pos, PVector.mult(forward, 20));
+
+                Bullet b = new Bullet(inFront.x, inFront.y, rot, c, p);
+                ((YASC)p).bullets.add(b); //.add is how you add to PApplet
+                //p.bullets.add(b); this gives an error
+                //type is PApplet, subclass is and instance is YASC
             }
         }
     }
