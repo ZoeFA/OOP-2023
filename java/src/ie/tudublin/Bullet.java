@@ -45,6 +45,12 @@ public class Bullet {
             ((YASC)p).bullets.remove(this);
         }
 
+        if (pos.x <0){
+            pos.x = p.width;
+
+        }
+        //if(pos.y )
+
 
     }
 

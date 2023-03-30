@@ -8,6 +8,9 @@ public class Ship {
     private PVector forward;
     private PApplet p;
 
+    int timeToLive = 5000;
+    int creationTime = 0;
+
     public Ship(float x, float y, float size, int c, PApplet p)
     {
         pos = new PVector(x, y);
@@ -16,6 +19,7 @@ public class Ship {
         this.halfSize = size / 2;
         this.c = c;       
         this.p = p;  
+        creationTime = p.millis();
     }
 
 
@@ -48,6 +52,10 @@ public class Ship {
     private int c;
     private float size;
     private float halfSize;
+
+    int fireRate = 5;
+    int toPass = 10000/fireRate;
+    int ellapsed = 1000;
 
     public void move()
     {
@@ -87,7 +95,16 @@ public class Ship {
 
             ((YASC)p).bullets.add(b);
         }
+
+        int now =p.millis();
+        timeDelta = p.millis() - last;
+        ellapsed += timeDelta;
+        last = now;
     }
+
+    int last = 0;
+    int timeDelta;
+
 
     public void render()
     {
