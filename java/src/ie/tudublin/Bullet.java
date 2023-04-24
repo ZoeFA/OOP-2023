@@ -72,16 +72,6 @@ public class Bullet {
             ((YASC)p).bullets.remove(this);
         }
 
-<<<<<<< HEAD
-        if (pos.x <0){
-            pos.x = p.width;
-
-        }
-        //if(pos.y )
-
-
-=======
->>>>>>> d1af8cf42076566858f7fc2350fd9581150f2cd1
     }
 
 
