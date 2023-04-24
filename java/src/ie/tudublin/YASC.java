@@ -5,6 +5,23 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PVector;
 
+
+/*yasc class keeps track of player class, which keeps track of bullet class
+player is a field in yasc
+yasc is a subclass of PApplet
+1 to many relationship from yasc to gameobject
+gameobject will be the superclass of player and bullet
+move position,rotation and methods: render and update, from bullet to gameobject
+now any subclasses og gameobject will have position,rotation,render,update whether these are public or private
+
+game object is abstract class
+abstract:
+	-> cannot be instantiated
+	-> any class that extends game object will also be abstract unless they implement abstract methods
+	-> abstract methods are empty body methods
+*/
+
+
 public class YASC extends PApplet
 {
 	Ship ship;
