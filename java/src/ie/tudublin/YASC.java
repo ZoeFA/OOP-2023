@@ -24,8 +24,6 @@ abstract:
 
 public class YASC extends PApplet
 {
-	Ship ship;
-	Ship ship1;
 
 	public boolean[] keys = new boolean[1024]; 
 
@@ -40,7 +38,7 @@ public class YASC extends PApplet
 	}
 
 	// Generic
-	public ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+	public ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
 
 	public void settings()
@@ -48,14 +46,14 @@ public class YASC extends PApplet
 		size(500, 500);
 
 		PVector a = new PVector(10, 10);
-        PVector b = new PVector(20, 20);
+    PVector b = new PVector(20, 20);
 
-        b = a;
-        
-        b.x = 30;
-        b.y = 30;
+		b = a;
+		
+		b.x = 30;
+		b.y = 30;
 
-        println(a);
+		println(a);
 		
 	}
 
